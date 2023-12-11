@@ -2,10 +2,16 @@
 
 using namespace std;
 
-int mount(int** a, int N, int M, int x, int y, int count) {
-  if (count == N*M -2) {
-   // cout<<"FINISH\n";
-    return 1;
+void mount(int** a, int N, int M, int x, int y, int count) {
+  for (int i = 0; i < N; i++) {
+    for (int j = 0; j < M; j++) {
+      cout << a[i][j] << " ";
+    }
+    cout << endl;
+  }
+  if (count == N*M-2) {
+    cout<<"FINISH\n";
+    return;
   }
   if (x+1 < N && a[x+1][y] == 0) {
     a[x+1][y] = a[x][y] - 1; 
@@ -45,8 +51,7 @@ int main() {
     a[i] = new int[M]();
   }
   a[x][y] = -1;
-  int one = mount(a, N, M, x, y, 0);
-  cout<<one<<endl;
+  mount(a, N, M, x, y, 0);
   for (int i = 0; i < N; i++) {
     for (int j = 0; j < M; j++) {
       cout << a[i][j] << " ";
